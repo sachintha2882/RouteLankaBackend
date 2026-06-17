@@ -1,7 +1,8 @@
 package com.example.RouteLanka.Service;
 
 
-import com.example.RouteLanka.DTO.AuthRequest;
+import com.example.RouteLanka.DTO.AuthRequestDTO;
+import com.example.RouteLanka.DTO.AuthRequestDTO;
 import com.example.RouteLanka.DTO.LoginRequest;
 import com.example.RouteLanka.Model.Role;
 import com.example.RouteLanka.Model.User;
@@ -18,7 +19,11 @@ public class AuthSerivice {
     private UserRepo userRepo;
 
 
-    public String register(AuthRequest req) {
+    public String register(AuthRequestDTO req) {
+
+        if(!req.getPassword().equals(req.getConfirmPassword())){
+            throw new RuntimeException("Passwords do not match");
+        }
 
         User user = new User();
         user.setName(req.getName());

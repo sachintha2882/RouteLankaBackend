@@ -1,7 +1,7 @@
 package com.example.RouteLanka.Controller;
 
 
-import com.example.RouteLanka.DTO.AuthRequest;
+import com.example.RouteLanka.DTO.AuthRequestDTO;
 import com.example.RouteLanka.Service.AuthSerivice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,7 @@ public class AuthController {
     private AuthSerivice authSerivice;
 
     @PostMapping("/register")
-    public String register(@RequestBody AuthRequest request){
+    public String register(@RequestBody AuthRequestDTO request){
         return authSerivice.register(request);
     }
 }
